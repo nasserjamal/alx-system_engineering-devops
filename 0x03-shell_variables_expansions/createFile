@@ -1,0 +1,6 @@
+#!/bin/bash
+fileName=$1
+commandWrite=$2
+echo -e "#!/bin/bash \n$commandWrite" > ${fileName};
+chmod u+x ${fileName};
+cat ${fileName}
