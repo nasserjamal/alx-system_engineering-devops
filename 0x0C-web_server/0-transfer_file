@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 # Transfers a file to a host
 if [ $# -lt 3 ]
 then
