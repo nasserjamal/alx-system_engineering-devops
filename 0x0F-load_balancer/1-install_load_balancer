@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # Configure a new server to run haproxy
 sudo apt update
-sudo apt-get haproxy
+sudo apt install haproxy -y
 
 haproxy_config="
 frontend haproxy_frontend
-    bind *:8080
+    bind *:80
     timeout client 60s
     mode http
     default_backend allservers
@@ -19,7 +19,6 @@ backend allservers
 "
 
 echo "$haproxy_config" > /etc/haproxy/haproxy.cfg
-sudo haproxy -f /etc/haproxy/myConfig.cfg
 
 if [ "$(pgrep -c haproxy)" -le 0 ]; then
 	service haproxy start
