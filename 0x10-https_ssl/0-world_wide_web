@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+# This is a comment
 subdomains_all=( "www" "lb-01" "web-01" "web-02" )
 
 runDig () {
