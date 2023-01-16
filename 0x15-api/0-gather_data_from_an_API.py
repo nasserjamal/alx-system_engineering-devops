@@ -4,11 +4,11 @@ Using https://jsonplaceholder.typicode.com
 returns info about employee TODO progress
 Implemented using recursion
 """
+import requests
+import sys
 
 
 if (__name__ == "__main__"):
-    import requests
-    import sys
     url = "https://jsonplaceholder.typicode.com/"
     resp_user = requests.get(f"{url}users?id={sys.argv[1]}")
     resp_todo = requests.get(f"{url}todos?userId={sys.argv[1]}")
