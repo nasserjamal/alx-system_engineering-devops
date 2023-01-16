@@ -4,6 +4,7 @@ Using https://jsonplaceholder.typicode.com
 returns info about employee TODO progress
 Implemented using recursion
 """
+import re
 import requests
 import sys
 
@@ -12,7 +13,7 @@ API = "https://jsonplaceholder.typicode.com"
 """REST API url"""
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     url = "https://jsonplaceholder.typicode.com/"
     resp_user = requests.get(f"{API}/users?id={sys.argv[1]}")
     resp_todo = requests.get(f"{API}/todos?userId={sys.argv[1]}")
