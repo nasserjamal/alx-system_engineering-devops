@@ -8,6 +8,10 @@ import requests
 import sys
 
 
+API = "https://jsonplaceholder.typicode.com"
+"""REST API url"""
+
+
 if (__name__ == "__main__"):
     url = "https://jsonplaceholder.typicode.com/"
     resp_user = requests.get(f"{url}users?id={sys.argv[1]}")
