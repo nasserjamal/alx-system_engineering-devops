@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-""" Gather data from an API """
+"""
+Using https://jsonplaceholder.typicode.com
+returns info about employee TODO progress
+Implemented using recursion
+"""
 
 
 if (__name__ == "__main__"):
