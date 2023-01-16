@@ -22,6 +22,8 @@ if __name__ == '__main__':
             user_info = resp_user
             todos_completed = [i for i in resp_todo if i.get('completed')]
             todos_all = resp_todo
+            todos = list(filter(lambda x: x.get('userId') == id, resp_todo))
+            todos_done = list(filter(lambda x: x.get('completed'), todos))
             c = len(todos_completed)
             all = len(todos_all)
             print(f"Employee {user_info[0].get('name')} is done with tasks({c}/{all}):")
