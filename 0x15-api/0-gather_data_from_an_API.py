@@ -16,14 +16,18 @@ API = "https://jsonplaceholder.typicode.com"
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         if re.fullmatch(r'\d+', sys.argv[1]):
-            resp_user = requests.get(f"{API}/users?id={sys.argv[1]}")
-            resp_todo = requests.get(f"{API}/todos?userId={sys.argv[1]}")
-            if resp_user.status_code != 200 or resp_todo.status_code != 200:
-                exit()
-            user_info = resp_user.json()
-            todos_completed = [i for i in resp_todo.json() if i.get('completed')]
-            todos_all = resp_todo.json()
-            c = len(todos_completed)
-            all = len(todos_all)
-            print(f"Employee {user_info[0].get('name')} is done with tasks({c}/{all}):")
-            [print(f"\t {todo.get('title')}") for todo in todos_completed]
+            id = int(sys.argv[1])
+            user_res = requests.get('{}/users/{}'.format(API, id)).json()
+            todos_res = requests.get('{}/todos'.format(API)).json()
+            user_name = user_res.get('name')
+            todos = list(filter(lambda x: x.get('userId') == id, todos_res))
+            todos_done = list(filter(lambda x: x.get('completed'), todos))
+            print(
+                'Employee {} is done with tasks({}/{}):'.format(
+                    user_name,
+                    len(todos_done),
+                    len(todos)
+                )
+            )
+            for todo_done in todos_done:
+                print('\t {}'.format(todo_done.get('title')))
