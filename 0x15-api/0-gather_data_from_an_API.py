@@ -34,4 +34,5 @@ if __name__ == '__main__':
                     len(todos)
                 )
             )
-            [print(f"\t {todo.get('title')}") for todo in todos_completed]
+            for todo_done in todos_done:
+                print('\t {}'.format(todo_done.get('title')))
