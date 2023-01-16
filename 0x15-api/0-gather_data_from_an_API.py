@@ -26,5 +26,12 @@ if __name__ == '__main__':
             todos_done = list(filter(lambda x: x.get('completed'), todos))
             c = len(todos_completed)
             all = len(todos_all)
-            print(f"Employee {user_info[0].get('name')} is done with tasks({c}/{all}):")
+            user_name = resp_user.get('name')
+            print(
+                'Employee {} is done with tasks({}/{}):'.format(
+                    user_name,
+                    len(todos_done),
+                    len(todos)
+                )
+            )
             [print(f"\t {todo.get('title')}") for todo in todos_completed]
