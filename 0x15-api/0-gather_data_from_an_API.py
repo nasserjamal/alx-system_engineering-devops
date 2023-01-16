@@ -19,9 +19,9 @@ if (__name__ == "__main__"):
     if resp_user.status_code != 200 or resp_todo.status_code != 200:
         exit()
     user_info = resp_user.json()
-    todos_completed = [i for i in resp_todo.json() if i['completed']]
+    todos_completed = [i for i in resp_todo.json() if i.get('completed')]
     todos_all = resp_todo.json()
     c = len(todos_completed)
     all = len(todos_all)
-    print(f"Employee {user_info[0]['name']} is done with tasks({c}/{all}):")
-    [print("\t"+todo['title']) for todo in todos_completed]
+    print(f"Employee {user_info[0].get('name')} is done with tasks({c}/{all}):")
+    [print("\t"+todo.get('title')) for todo in todos_completed]
