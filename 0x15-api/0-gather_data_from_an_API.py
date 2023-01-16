@@ -14,8 +14,8 @@ API = "https://jsonplaceholder.typicode.com"
 
 if __name__ == "__main__":
     url = "https://jsonplaceholder.typicode.com/"
-    resp_user = requests.get(f"{url}users?id={sys.argv[1]}")
-    resp_todo = requests.get(f"{url}todos?userId={sys.argv[1]}")
+    resp_user = requests.get(f"{API}/users?id={sys.argv[1]}")
+    resp_todo = requests.get(f"{API}/todos?userId={sys.argv[1]}")
     if resp_user.status_code != 200 or resp_todo.status_code != 200:
         exit()
     user_info = resp_user.json()
