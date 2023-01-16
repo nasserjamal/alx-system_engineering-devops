@@ -16,7 +16,6 @@ API = "https://jsonplaceholder.typicode.com"
 if __name__ == '__main__':
     if len(sys.argv) > 1:
         if re.fullmatch(r'\d+', sys.argv[1]):
-            url = "https://jsonplaceholder.typicode.com/"
             resp_user = requests.get(f"{API}/users?id={sys.argv[1]}")
             resp_todo = requests.get(f"{API}/todos?userId={sys.argv[1]}")
             if resp_user.status_code != 200 or resp_todo.status_code != 200:
